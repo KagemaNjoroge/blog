@@ -1,19 +1,27 @@
 const projectsData = [
   {
-    title: 'A Search Engine',
-    description: `What if you could look up any information in the world? Webpages, images, videos
-    and more. Google has many features to help you find exactly what you're looking
-    for.`,
-    imgSrc: '/static/images/google.png',
-    href: 'https://www.google.com',
+    title: 'E-Commerce Store',
+    description: `A simple e-commerce store built with Wordpress and woocommerce. It has a simple and clean design that is easy to navigate. It is also mobile responsive.`,
+    imgSrc: '/static/images/kyle.png',
+    href: 'https://carlnkyle.co.ke',
   },
   {
-    title: 'The Time Machine',
-    description: `Imagine being able to travel back in time or to the future. Simple turn the knob
-    to the desired date and press "Go". No more worrying about lost keys or
-    forgotten headphones with this simple yet affordable solution.`,
+    title: 'The Flutter Portfolio',
+    description: `A portfolio app built with Flutter. It features an Android and iOS version. It is a simple app that showcases my skills and projects.`,
     imgSrc: '/static/images/time-machine.jpg',
-    href: '/blog/the-time-machine',
+    href: 'https://github.io/kagemanjoroge',
+  },
+    {
+    title: 'Data Persistence in Flutter using SQLite, Book & Authors App',
+    description: `A simple app that demonstrates how to use SQLite in Flutter. It is a simple app that allows you to add, edit, delete and view books and authors.`,
+    imgSrc: '/static/images/books.png',
+    href: 'https://github.com/KagemaNjoroge/BooksAuthorsApp.git',
+  },
+      {
+    title: 'ReactJS Portfolio',
+    description: `A simple portfolio app built with ReactJS. It is a simple app that showcases my skills and projects.`,
+    imgSrc: '/static/images/Demo.png',
+    href: 'https://github.com/KagemaNjoroge/portfolio.git',
   },
 ]
 
