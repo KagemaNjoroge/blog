@@ -21,7 +21,7 @@ const projectsData = [
     title: 'ReactJS Portfolio',
     description: `A simple portfolio app built with ReactJS. It is a simple app that showcases my skills and projects.`,
     imgSrc: '/static/images/Demo.png',
-    href: 'https://github.com/KagemaNjoroge/portfolio.git',
+    href: 'https://portfolio.tomorrow.co.ke',
   },
 ]
 
