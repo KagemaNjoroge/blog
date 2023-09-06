@@ -4,7 +4,7 @@ const siteMetadata = {
   author: 'Kagema Njoroge',
   headerTitle: 'Kagema Njoroge',
   description:
-    'The story, thoughts and opinions of Kagema Njoroge. A software engineer based in Nairobi, Kenya. I write about software engineering, tech, and life.',
+    'The story, thoughts and opinions of Kagema Njoroge. A software engineer based in Nairobi, Kenya. I write about AI, software engineering, tech, and life.',
   language: 'en-us',
   theme: 'system', // system, dark or light
   siteUrl: 'https://njoroge.tomorrow.co.ke',
@@ -81,9 +81,9 @@ const siteMetadata = {
     // provider: 'algolia',
     // algoliaConfig: {
     //   // The application ID provided by Algolia
-    //   appId: 'R2IYF7ETH7',
+    //   appId: '7J62XWBJIY',
     //   // Public API key: it is safe to commit it
-    //   apiKey: '599cec31baffa4868cae4e79f180729b',
+    //   apiKey: '50052c47f7a57b02d91522a819a272b7',
     //   indexName: 'docsearch',
     // },
   },
