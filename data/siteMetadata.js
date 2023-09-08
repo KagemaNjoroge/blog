@@ -10,7 +10,7 @@ const siteMetadata = {
   siteUrl: 'https://njoroge.tomorrow.co.ke',
   siteRepo: 'https://github.com/KagemaNjoroge/blog',
   siteLogo: '/static/images/favicon.png',
-  socialBanner: '/static/images/twitter-card.png',
+  socialBanner: '/static/images/new_logo.png',
   mastodon: 'https://mastodon.social/@mastodonuser',
   email: 'reecejames934@gmail.com',
   github: 'https://github.com/kagemanjoroge',
