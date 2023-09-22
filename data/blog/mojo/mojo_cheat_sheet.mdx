@@ -1,0 +1,203 @@
+---
+title: Mojo Cheat Sheet - Quick Reference Guide
+date: '2023-09-22'
+tags:
+  [
+    'AI',
+    'Mojo',
+    'Machine Learning',
+    'Deep Learning',
+    'Neural Networks',
+    'Artificial Intelligence',
+    'Cheat Sheet',
+  ]
+draft: false
+summary: Your quick reference guide to the Mojo programming language. Learn the essential syntax, features, and best practices for AI development in Mojo.
+---
+
+<div style={{ textAlign: 'center' }}>![Mojo Programming](/static/images/mojo/mojo.png)</div>
+
+Welcome to the Mojo Cheat Sheet - your ultimate quick reference guide to mastering the Mojo programming language. If you've been intrigued by Mojo's promise of combining the best of Python's ease of use with the performance of C++ and Rust, you're in the right place.
+This quick reference guide will equip you with the essential knowledge and insights to start coding with Mojo like a pro.
+
+## Mojo REPL
+
+Mojo comes with a built-in REPL (Read-Eval-Print-Loop) that you can use to quickly test out your code. To start the REPL, simply type `mojo` in your terminal. You should see something like this:
+
+```bash
+$ mojo
+```
+
+## Hello World
+
+Let's start with the obligatory Hello World program. Here's how you do it in Mojo _(type this in the REPL)_:
+
+```python
+  print("Hello World!")
+```
+
+Mojo's syntax is very similar to Python's, so if you're familiar with Python, you'll feel right at home.
+
+## Building and Running a Mojo Files
+
+Mojo source files are identified with either the .mojo or .🔥 file extension.  
+**Running .mojo files**  
+Create a file called `hello_world.mojo` and type the following code in it:
+
+```python
+  fn main():
+    print("Hello World!")
+```
+
+Head back to the terminal and run the file with the following command:
+
+```bash
+$ mojo hello_world.mojo
+```
+
+**Building .mojo files**  
+Mojo files are compiled to native binaries. To build a Mojo file, use the `build` command:
+
+```bash
+$ mojo build hello_world.mojo
+```
+
+The command above creates the binary with the same name as the .mojo file, but you can change that with the `-o` option.  
+**Running the built binary**
+
+```bash
+$ ./hello_world
+```
+
+The executable is a statically-compiled binary, which means it has no external library dependencies and it can run on any system with the same CPU architecture as your own.
+
+## Language Basics
+
+Like all compiled languages, Mojo programs require a `main()` function as the entry point. The `main` function is where the program starts executing.
+
+```python
+  fn main():
+    print("Hello World!")
+```
+
+## Syntax and Semantics
+
+Mojo supports all Python's syntax and semantics.  
+ Mojo uses line breaks to separate statements, so you don't need to use semicolons to terminate statements.
+
+```python
+  fn main():
+    print("Hello World!")
+    print("Hello World!")
+```
+
+Code blocks are delimited by indentation, so you don't need to use curly braces to delimit blocks. It's just like Python.
+
+```python
+  fn main():
+    print("Hello World!")
+    print("Hello World!")
+```
+
+## Variables
+
+Variables in Mojo are declared using `let` and `var` keywords.  
+√ `let` is used to declare variables that can't be reassigned.  
+√ `var` is used to declare variables that can be reassigned.
+
+```python
+  let x = 10 # x can't be reassigned
+  var y = 20 # y can be reassigned
+```
+
+**Type Annotations**  
+Declaring variable types is optional in Mojo, but you can add type annotations if you want to.
+
+```python
+  let x: Int = 10 # x is an integer
+```
+
+If you don't specify a type, Mojo will infer it for you. For example,
+
+```python
+    let x = 10 # x is an integer, type is automatically inferred
+    ley y:Int = 20 # y is an integer
+
+    print(x + y) # 30
+```
+
+## Functions
+
+Functions in Mojo are declared using the `fn` keyword.
+
+```python
+  fn add(x: Int, y: Int) -> Int:
+    return x + y
+```
+
+**Calling Functions**
+
+```python
+  fn main():
+    let x = 10
+    let y = 20
+    let z = add(x, y)
+    print(z) # 30
+```
+
+Mojo functions can also be declared with the `def` keyword (just like Python).
+
+```python
+  def add(x: Int, y: Int) -> Int:
+    return x + y
+```
+
+## Structures
+
+A struct in Mojo is **similar to a Python class**: they both support methods, fields, operator overloading, decorators for metaprogramming
+
+```python
+struct Car:
+  var mileage : Int
+  var tyres : Int
+
+  fn __init__(inout self, mileage : Int, tyres : Int):
+    self.mileage = mileage
+    self.tyres = tyres
+
+```
+
+Differences between Mojo's Struct and Python's Class
+
+| Mojo Struct                                                | Python Class                                                                                    |
+| ---------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
+| Mojo structs are dynamic - They are bound at compile time. | Python classes are dynamic - they allow for dynamically binding instance properties at runtime. |
+
+## Integration with Python
+
+Mojo is interoperable with Python  
+It’s easy to use Python modules you know and love in Mojo. You can import any Python module into your Mojo program and create Python types from Mojo types.
+
+```python
+from python import Python
+# let's import numpy from python
+let np = Python.import_module("numpy") # similar to import numpy as np
+let array = np.array([1, 2])
+
+```
+
+**Conclusion**
+
+Mojo, with its incredible blend of performance and ease of use, is poised to redefine the landscape of AI development. As you've seen in this cheat sheet, Mojo's Python-like syntax makes it approachable, even for those new to systems programming.
+
+Whether you're starting with a simple "Hello World" program or diving into more complex AI projects, Mojo provides the tools and flexibility you need. You've learned about Mojo's REPL, the basics of running and building Mojo files, and the core language features.
+
+Variables, functions, and structures in Mojo follow a familiar pattern for Python developers, making the transition smooth. Plus, Mojo's interoperability with Python allows you to harness the vast Python ecosystem while enjoying the benefits of Mojo's performance.
+
+And don't forget that Mojo's metaprogramming capabilities and extensibility open up a world of possibilities for creating your own custom abstractions and optimizations.
+
+So, as you embark on your Mojo-powered AI journey, remember this cheat sheet as your trusty companion, ready to assist you with essential syntax, features, and best practices. With Mojo, you're not just coding; you're shaping the future of AI.
+
+Explore, experiment, and code with confidence. Mojo is here to stay, and it's a game-changer for AI development.
+
+Now that you've got the Mojo basics at your fingertips, it's time to unleash your creativity and build the AI solutions of tomorrow. Happy coding!
