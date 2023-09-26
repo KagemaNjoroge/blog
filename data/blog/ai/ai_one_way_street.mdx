@@ -1,0 +1,38 @@
+---
+title: "AI's One-Way Street: Why It Can Relate A to B But Stumbles When Asked About B's Connection to A"
+date: '2023-09-26'
+tags: ['Artificial Intelligence', 'AI', 'Technology']
+draft: false
+summary: Explore the intriguing limits of AI understanding as we delve into why it excels in connecting A to B but fails when you reverse the question. Discover insights into the inner workings of language models in this thought-provoking article.
+---
+
+In the age of artificial intelligence and machine learning, we've come to rely on language models to provide answers to our questions, perform tasks, and even engage in natural language conversations. These models, powered by enormous amounts of data and sophisticated algorithms, have the capacity to process and generate human-like text. However, they are not without their limitations. One intriguing limitation is their ability to relate entities or facts in one direction but fail when asked to reverse the query. In simpler terms, AI can tell you about A's relationship with B but struggles when you inquire about B's connection to A. Why does this happen, and are there possible solutions? Let's dive into this fascinating phenomenon.
+
+![LLM drawbacks](/static/images/AI/ai_failure.jpeg)
+
+## The One-Way Street of AI Understanding
+
+Imagine you ask an AI model a straightforward question: _"Who is Ronaldo's mother?"_. The model promptly responds with "Maria Dolores dos Santos Viveiros da Aveiro." In this instance, the AI can seamlessly identify the relationship between Ronaldo and his mother, Maria Dolores dos Santos Viveiros da Aveiro. It seems like AI understands familial relationships, right?
+
+However, let's flip the script and ask a seemingly related question: _"Who is Maria Dolores dos Santos Viveiros da Aveiro's son?"_ To our surprise, the AI model may struggle to provide a direct answer, or it might return unrelated or ambiguous information. This one-way understanding of relationships often leaves us scratching our heads.
+
+**Why Does This Happen?**  
+The limitations of AI in handling reversed queries stem from a combination of factors:
+
+**Contextual Understanding:** AI models rely heavily on the context provided in a query to generate responses. In the first question, "Who is Ronaldo's mother," the model has the necessary context (Ronaldo) to infer the relationship. However, in the second question, the context isn't as clear, making it challenging for the model to identify the specific relationship between Maria Dolores dos Santos Viveiros da Aveiro and her son (Ronaldo).
+
+**Training Data:** AI models, including GPT-3.5, are trained on static datasets, which means they have a knowledge cutoff date. They may not have access to real-time or the most up-to-date information. If the dataset they were trained on lacks explicit information about relationships or doesn't include certain entities, the model may struggle to provide accurate answers.
+
+## Possible Fixes and Enhancements
+
+While AI's one-way understanding of relationships is a known limitation, there are potential solutions and enhancements that can help address this issue:
+
+**Fine-tuning with Explicit Relationships:** One approach is to fine-tune AI models on datasets that explicitly encode relationships between entities. By exposing the model to structured relationship data, it can learn to handle reversed queries more effectively.
+
+**External Knowledge Bases:** Integrating AI models with external knowledge bases like Wikidata, DBpedia, or Freebase can provide additional context and structured information about entities and their relationships. These databases can be used alongside the model to enhance its ability to answer relationship-related questions. We can also achieve this by making large language models have access to the internet.
+
+**Improving Contextual Understanding:** Researchers are continuously working on improving language models to better understand context, including relationships. Future iterations of AI models may possess enhanced bidirectional understanding capabilities.
+
+**Explicit Contextualization:** When querying AI models, providing additional context can guide the model in the right direction. For example, you can phrase the question as, "Regarding Maria Dolores dos Santos Viveiros da Aveiro, who is her son?" This added context can help the model generate a more accurate response.
+
+In conclusion, while AI has made remarkable strides in natural language understanding, it still struggles with certain challenges, including bidirectional relationship comprehension. As AI continues to evolve, we can expect improvements in its ability to handle these types of queries. Until then, it's essential to be aware of this limitation and explore workarounds to obtain the most accurate and relevant information from our AI-powered tools and systems.
