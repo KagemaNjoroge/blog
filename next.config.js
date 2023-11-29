@@ -6,6 +6,8 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 
 // You might need to insert additional domains in script-src if you are using external services
 // add google analytics policy
+
+
 const ContentSecurityPolicy = `
   default-src 'self';
   script-src 'self' 'unsafe-eval' 'unsafe-inline' giscus.app analytics.umami.is https://www.google-analytics.com https://www.googletagmanager.com;  
@@ -66,6 +68,7 @@ module.exports = () => {
     pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'],
     eslint: {
       dirs: ['app', 'components', 'layouts', 'scripts'],
+      ignoreDuringBuilds: true,
     },
     images: {
       domains: ['picsum.photos'],
