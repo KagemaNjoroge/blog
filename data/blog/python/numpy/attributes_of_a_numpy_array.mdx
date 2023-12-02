@@ -1,0 +1,61 @@
+---
+title: 'Understanding the attributes of NumPy arrays and their versatility.'
+date: '2023-12-02'
+tags: ['Python', 'Numpy', 'Data Science', 'Machine Learning', 'Artificial Intelligence']
+draft: false
+summary: Explore the diverse attributes and capabilities of NumPy arrays in our comprehensive blog. From shape and size to data type handling, delve into the fundamental characteristics that make NumPy arrays a powerhouse for scientific computing and data manipulation.
+---
+Numpy is at the backbone of numerical computing in Python.  
+Below are the attributes of a Numpy array.
+- <u style={{color : '#EC4899'}}>ndarray.ndim</u>  
+Gives the number of dimensions of the array as an integer value
+```python
+array = np.array([1, 2, 3])
+array.ndim # Returns 1
+
+array2 = np.array([[2, 3, 4], [2, 3, 4]])
+array2.ndim # Returns 2
+```
+
+- <u style={{color : '#EC4899'}}>ndarray.shape</u>  
+Gives the sequence of integers indicating the size of the array for each dimension
+```python
+array = np.array([1, 2, 3])
+array.shape # Returns (3,)
+
+array2 = np.array([[3, 4, 5], [6, 7, 8]])
+
+array2.shape # Returns (2, 3)
+
+```
+- <u style={{color : '#EC4899'}}>ndarray.size</u>  
+It returns the total number of elements in the array
+
+```python
+arr = np.array([3, 4, 6])
+
+np.size # Returns 3
+
+arr2 = np.array([[3, 5, 7], [8, 90, 10]])
+arr2.size # Returns 6
+```
+
+- <u style={{color : '#EC4899'}}>ndarray.dtype</u>  
+Returns the data type of the elements in the array. All elements in the array are of same data type. Common data types are `int32`, `int64` `float32`, `float64`, `U32`
+
+```python
+array = np.array([10, 20, 30])
+array.dtype # Returns int64
+
+array2 = np.array(["Python", "Pytorch", "Maths", "Statistics", "AI"])
+
+array2.dtype # Returns <U10>
+```
+- <u style={{color : '#EC4899'}}>ndarray.itemsize</u>  
+It specifies the size in bytes of each element in the array. Data type int32 and float32 means each element of the array occupies 32 bits in memory. 8 bits form a byte. Thus, an array of elements of type int32 has itemsize 32/8 = 4 bytes.
+
+```python
+arr = np.array([3, 4, 5])
+arr.itemsize # Returns 8 - the dtype of array is int64, thus each item has 64 / 8 = 8 bytes 
+```
+
