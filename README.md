@@ -8,7 +8,6 @@ Welcome to my minimal blog
 
 - Python
 - Pytorch
-- Django
-- Flutter
 
-[URL](https://njoroge.tomorrow.co.ke)
+
+Made with ❤️ by [Tomorrow Kenya](https://tomorrow.co.ke)
