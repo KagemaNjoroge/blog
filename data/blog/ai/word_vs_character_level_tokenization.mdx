@@ -1,0 +1,84 @@
+---
+title: 'Character vs. Word Tokenization in NLP: Unveiling the Trade-Offs in Model Size, Parameters, and Compute'
+date: '2024-01-20'
+tags: ['Natural Language Processing', 'Tokenization', 'Machine Learning', 'Model Optimization']
+draft: false
+summary: Explore the pivotal choice between character and word tokenization in NLP. Uncover the trade-offs in model size, parameters, and compute efficiency. Decipher the key considerations for optimal natural language processing. Dive into our insightful analysis now.
+---
+
+In Natural Language Processing, the choice of tokenization method can make or break a model. Join me on a journey to understand the profound impact of character-level, word-level tokenization and Sub-word tokenization on model size, number of parameters, and computational complexity.
+
+
+
+<img src="/static/images/AI/tokenization.jpg" alt="Alt Text" style={{height:"400px", textAlign:"center", width:"40pc"}} />
+
+**First Things First, What is Tokenization?**
+
+AI operates with numbers, and for deep learning on text, we convert that text into numerical data. Tokenization breaks down textual data into smaller units, or tokens, like words or characters, which can be represented numerically.
+
+**Decoding Tokenization**  
+There are various techniques in tokenization, such as:
+
+- **Word Tokenization:** Divides text into words, creating a vocabulary of unique terms.
+- **Character Tokenization:** Breaks down text into individual characters, useful for specific tasks like morphological analysis.
+- **Subword Tokenization:** Splits words into smaller units, capturing morphological information effectively. Examples [BERT](https://huggingface.co/docs/transformers/model_doc/bert) and [SentencePiece](https://github.com/google/sentencepiece)
+
+.
+
+**Character-Level Tokenization**
+
+We essentially create tokens out of individual characters present in the text. This involves compiling a unique set of characters found in the dataset, ranging from alphanumeric characters to ASCII symbols. By breaking down the text into these elemental units, we generate a concise set of tokens, resulting in a smaller number of model parameters. This lean approach is particularly advantageous in scenarios with `limited datasets, such as low-resource languages`, where it can efficiently capture patterns without overwhelming the model.
+
+```python
+# Consider the sentence, "I love Python"
+# If we tokenize by characters the result will be ['I', ' ', 'l', 'o', 'v', 'e', ' ', 'P', 'y', 't', 'h', 'n']
+sent = "I love Python"
+tokens = [i for i in set(sent)] # Use a set to obtain ony unique ones
+# if we then represent the sentence above numerically
+numerical_representation = {i:ch for i, ch in enumerate(tokens)}
+number_of_tokens = len(s)
+```
+
+**Word-Level Tokenization:**
+
+Word-level tokenization involves breaking down the text into individual words. This process results in a vocabulary composed of unique terms present in the dataset. Unlike character-level tokenization, which deals with individual characters, word-level tokenization operates at a higher linguistic level, capturing the meaning and context of words within the text.
+
+This approach leads to a larger model vocabulary, encompassing the diversity of words used in the dataset. While this richness is beneficial for understanding the semantics of the language, it introduces challenges, particularly when working with extensive datasets. The increased vocabulary size translates to a higher number of model parameters, necessitating careful management to prevent overfitting.
+
+```py
+# Consider the sentence, "I love Python"
+sent = "I love Python"
+tokens = [i for i in set(sent.split())]
+numerical_representation = {i:ch for i, ch in enumerate(tokens)}
+```
+
+However, the trade-off lies in the potential for overfitting, especially when dealing with smaller datasets. Striking a balance between a rich vocabulary and avoiding overparameterization becomes a critical consideration when employing word-level tokenization in natural language processing tasks.
+
+**Subword Tokenization**  
+Subword tokenization interpolates between word-based and character-based tokenization.
+
+Instead of treating each whole word as a single building block, subword tokenization breaks down words into smaller, meaningful pieces.
+These smaller parts, or subwords, carry meaning on their own and help the computer understand the structure of the word in a more detailed way.
+Common words get a slot in the vocabulary, but the tokenizer can fall back to word pieces and individual characters for unknown words.
+
+_Let's do a simple experiment to show the impacts of a tokenization method on the model_  
+[Colab Link](https://colab.research.google.com/drive/1PwAr2Gt0x_8UUXd5ED_nBTJlpdRXeU3V?usp=sharing) to the code
+
+![Effects of tokenization technique on model size, perfomance an compute complexity](/static/images/AI/tokenization.png)  
+
+From the experiment I conducted above the trend is as follows:
+- As the number of tokens increases: 
+    - The model size also increases
+    - Model training and inference becomes more compute demanding
+    - The size of dataset required to achieve high accuracy also increases  
+
+**Which tokenization method should I use?**  
+Sub-word tokenization is the industry standard!   
+Consider [Byte Pair Encodinge(BPE) techniques](https://huggingface.co/learn/nlp-course/chapter6/5?fw=pt) such as:
+1. [TikToken](https://github.com/openai/tiktoken)
+2. [SentencePiece](https://github.com/google/sentencepiece)  
+3. [BERT](https://huggingface.co/docs/transformers/model_doc/bert)  
+
+Use character level tokenization or word level tokenization where you have a smaller dataset.
+
+
