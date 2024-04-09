@@ -10,4 +10,4 @@ Welcome to my minimal blog
 - Pytorch
 
 
-Made with ❤️ by [Tomorrow Kenya](https://tomorrow.co.ke)
+Made with ❤️ @ [TomorrowAI](https://tomorrow.co.ke)
