@@ -7,7 +7,8 @@ Welcome to my minimal blog
 ## Technologies I use
 
 - Python
-- Pytorch
-
-
-Made with ❤️ @ [TomorrowAI](https://tomorrow.co.ke)
+- Flutter
+- Azure
+<div align="center">  
+Made with ❤️ @<a href="https://tomorrow.co.ke">TomorrowAI</a>
+</div>
