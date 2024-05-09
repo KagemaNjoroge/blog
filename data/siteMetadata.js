@@ -14,7 +14,7 @@ const siteMetadata = {
   mastodon: 'https://mastodon.social/@mastodonuser',
   email: 'reecejames934@gmail.com',
   github: 'https://github.com/kagemanjoroge',
-  twitter: 'https://twitter.com/',
+  twitter: 'https://twitter.com/reecejames934',
   facebook: 'https://facebook.com',
   youtube: 'https://youtube.com',
   linkedin: 'https://www.linkedin.com/kagemanjoroge',
