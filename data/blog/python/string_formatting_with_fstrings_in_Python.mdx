@@ -1,0 +1,137 @@
+---
+title: 'String Formatting with f-strings in Python'
+date: '2024-05-10'
+tags: ['python', 'programming', 'computer science']
+draft: false
+summary: Python f-strings provide a modern way to handle string formatting. Learn how to use f-strings for numeric precision, string alignment, type-specific formatting, zero-padding numbers, and date and time formatting in Python.
+---
+
+F-strings (formatted string literals) provide a modern way to handle string formatting in Python. They were introduced in Python 3.6. They offer a more concise and readable syntax compared to the traditional `%` formatting method.
+![Python f-strings](/static/images/python/python_f_strings.svg)  
+
+To create an f-string, begin your string literal with either lowercase `f` or uppercase `F`. This signals that it's an f-string. Inside the string, place expressions within curly braces `{}` where you want to insert their values. These expressions can include variables, calculations, function calls, or any valid Python expression.
+
+Expressions within f-strings are evaluated at runtime, and their values are directly inserted into the string. Let's look at a basic example:
+
+```python
+name = "Alice"
+age = 30
+city = "New York"
+
+message = f"Hello, {name}! You are {age} years old and lives in {city}."
+print(message)
+# Output: Hello, Alice! You are 30 years old and lives in New York.
+```
+
+One notable difference from `%s` formatting is the absence of the `%` operator. Instead, variables and expressions are directly enclosed within `{}` in the string.
+
+Additionally, f-strings support various formatting options, including:
+
+### Numeric Precision
+
+You can control the precision of floating-point numbers using `:.nf`, where `n` is an integer representing the number of decimal places.
+
+```python
+price = 123.456789
+
+# Format to two decimal places
+formatted_price_2 = f"Price: ${price:.2f}"
+print(formatted_price_2)  # Output: Price: $123.46
+
+# Format to three decimal places
+formatted_price_3 = f"Price (3 decimals): ${price:.3f}"
+print(formatted_price_3)  # Output: Price (3 decimals): $123.457
+
+# Format to no decimal places (integer rounding)
+formatted_price_int = f"Price (rounded): ${price:.0f}"
+print(formatted_price_int)  # Output: Price (rounded): $123
+```
+
+### String Alignment and Width
+
+You can align strings to the left, right, or center within a specified width using `:<w`, `:>w`, or `:^w`, where `w` is an integer.
+
+```python
+# Left alignment
+name = "Alice"
+print(f"Hello, {name:<10}!") # Output: Hello, Alice     !
+
+# Right alignment
+name = "Bob"
+print(f"Hello, {name:>10}!") # Output: Hello,        Bob!
+
+# Center alignment
+name = "Charlie"
+print(f"Hello, {name:^10}!") # Output: Hello,  Charlie !
+```
+
+### Type-Specific Formatting
+
+You can apply type-specific formatting using `:t`, where `t` represents the type. For example, `:b` for binary, `:x` for hexadecimal, `:e` for scientific notation, `:%` for percentage, etc.
+
+```python
+# Binary format
+num = 42
+print(f"{num:b}") # Output: 101010
+
+# Hexadecimal format
+num = 255
+print(f"{num:x}") # Output: ff
+
+# Scientific notation format
+num = 123456789
+print(f"{num:e}") # Output: 1.234568e+08
+
+# Percentage format
+num = 0.75
+print(f"{num:%}") # Output: 75.000000%
+```
+
+### Zero-Padding Numbers
+
+You can pad numbers with leading zeros using `:0w`, where `w` is the width.
+
+```python
+# Padding numbers with zeros
+num = 42
+print(f"The answer is {num:04}.") # Output: The answer is 0042.
+```
+
+### Date and Time Formatting
+
+For formatting date and time, f-strings support various format specifiers similar to those used with the `strftime` method. Here are some common ones:
+
+- `%Y`: Year with century as a decimal number (e.g., 2022).
+- `%y`: Year without century as a zero-padded decimal number (e.g., 22).
+- `%m`: Month as a zero-padded decimal number (01, 02, ..., 12).
+- `%d`: Day of the month as a zero-padded decimal number (01, 02, ..., 31).
+- `%H`: Hour (00, 01, ..., 23).
+- `%M`: Minute (00, 01, ..., 59).
+- `%S`: Second (00, 01, ..., 59).
+- `%A`: Weekday as a full name (Monday, Tuesday, ..., Sunday).
+- `%a`: Weekday as an abbreviated name (Mon, Tue, ..., Sun).
+- `%B`: Month as a full name (January, February, ..., December).
+- `%b` or `%h`: Month as an abbreviated name (Jan, Feb, ..., Dec).
+- `%p`: AM or PM.
+
+Here's an example:
+
+```python
+import datetime
+
+now = datetime.datetime.now()
+
+print(f'The current date is {now:%Y-%m-%d}.')
+print(f'The current time is {now:%H:%M:%S}.')
+print(f'The current date and time is {now:%Y-%m-%d %H:%M:%S}.')
+```
+
+---
+
+
+F-strings are a powerful tool for string formatting in Python. They offer a concise and readable syntax for embedding expressions within strings. By leveraging f-strings, you can enhance the readability and maintainability of your code.
+Happy coding! 🙂
+
+_If you enjoyed this article, you might also like [The Art of Code: Why Developers Should Read Others' Creations](/blog/python/reading_code)._
+
+
