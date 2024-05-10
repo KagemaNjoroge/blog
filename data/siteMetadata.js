@@ -19,7 +19,7 @@ const siteMetadata = {
   youtube: 'https://youtube.com',
   linkedin: 'https://www.linkedin.com/kagemanjoroge',
   locale: 'en-US',
-  
+
   analytics: {
     // If you want to use an analytics provider you have to add it to the
     // content security policy in the `next.config.js` file.
@@ -89,5 +89,5 @@ const siteMetadata = {
     // },
   },
 }
-
+// GROQ_API_KEY = "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
 module.exports = siteMetadata
