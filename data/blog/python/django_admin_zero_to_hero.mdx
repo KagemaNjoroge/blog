@@ -1,0 +1,208 @@
+---
+title: Django Admin - Zero to Hero
+date: '2024-05-21'
+tags: ['Python', 'Django']
+draft: false
+summary: Learn how to use Django Admin like a pro. Discover the essential features, tips, and tricks to manage your Django project efficiently with Django Admin.
+---
+
+One of the most powerful parts of Django is the automatic admin interface. It reads metadata from your models to provide a quick, model-centric interface where trusted users can manage content on your site.  
+The admin’s recommended use is limited to an organization’s internal management tool. It’s not intended for building your entire front end around.
+In this article, we will cover everything you need to know to become a Django Admin pro. We will start from scratch and gradually move to advanced topics.  
+By the end of this article, you will be able to manage your Django project efficiently using Django Admin.  
+This will be a long article, feel free to jump to the section you are interested in:
+
+- [Activating Django Admin](#accessing-django-admin)
+- [Creating Superuser](#creating-superuser)
+- [Accessing Django Admin Site](#accessing-django-admin-site)
+- [An Overview of Django Admin Interface](#an-overview-of-django-admin-interface)
+- [Creating and registering models](#creating-and-registering-models)
+- [ModelAdmin class](#a-little-further---modeladmin-class)
+- [ModelAdmin Actions](#modeladmin-actions)
+
+## Activating Django Admin
+
+The admin is enabled in the default project template used by startproject.
+If you’re not using the default project template, here are the requirements:
+
+- Add `django.contrib.admin` and its dependencies - `django.contrib.auth`, `django.contrib.contenttypes`, `django.contrib.messages`, and `django.contrib.sessions` - to your `INSTALLED_APPS` setting.
+- Add `admin.site.urls` to your URLconf. Modify the `urls.py` file in your project folder to include the following line:
+
+```python
+urlpatterns = [
+    path('admin/', admin.site.urls),
+]
+```
+
+## Creating Superuser
+
+To acess the Django admin, you need to create a superuser. Run the following command in your terminal:
+
+```bash
+python manage.py createsuperuser
+```
+
+You will be prompted to enter a username, email address, and password for the superuser.
+
+## Accessing Django Admin Site
+
+Run the Django development server:
+
+```bash
+python manage.py runserver
+```
+
+By default, Django development server will run on port 8000. Open your browser and navigate to `http://localhost:8000/admin/`. You will see the Django admin login page.
+
+![Django Admin Login Page](https://global.discourse-cdn.com/business7/uploads/djangoproject/optimized/3X/9/3/93b6643f06699f7905429c7a55d231e284f7eda9_2_1380x794.png)
+
+Enter the superuser credentials you created earlier to log in.
+
+## An Overview of Django Admin Interface
+
+![Django Admin Interface](https://assets.digitalocean.com/articles/eng_python/django/django-admin-panel.png)
+
+Without any other registered models, Django will display the “Groups” and “Users” models. These are part of Django’s authentication framework. You can use these models to manage users and groups in your Django project. Please note how they are categorized under the “Authentication and Authorization” section.
+
+## Creating and registering models
+
+In this article let's work with the `Books model` located in the `books` app. The `Books model` has the following fields:
+
+- `title` - The title of the book.
+- `author` - The author of the book.
+- `price` - The price of the book.
+- `published` - A boolean field to indicate if the book has been published.
+
+Assuming you have already created the `books` app, let's create the `Books model` in the `models.py` file of the `books` app:
+
+```python
+class Book(models.Model):
+    title = models.CharField(max_length=100)
+    author = models.CharField(max_length=100)
+    price = models.DecimalField(max_digits=10, decimal_places=2)
+    published = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.title # Display the title of the book in the Django admin site
+    class Meta:
+        # the attributes below are very useful for the Django admin interface, they are not required but are good practice
+        verbose_name = 'Book' # Singular name for the model
+        verbose_name_plural = 'Books' # Plural name for the model
+```
+
+In your `admin.py` file of the `books` app, register the `Books model`:
+
+```python
+from .models import Book
+admin.site.register(Book)
+```
+
+Save the file and make migrations:
+
+```bash
+python manage.py makemigrations
+python manage.py migrate
+```
+
+Restart the Django development server:
+
+```bash
+python manage.py runserver
+```
+
+Head over to the Django admin site and you will see the `Books` model listed under the `Books` section. You can now add, edit, and delete books using the Django admin interface.
+Make sure to create some books using the Django admin interface.
+
+![Books Model as seen in the Django Admin site](/static/images/python/django_admin_books_model.png)
+
+How cool is that?
+
+## A little further - ModelAdmin class
+
+It is possible to register a model with just the `admin.site.register(ModelName)` method.  
+Perhaps you need more control over how the model is displayed in the admin interface. This is where the `ModelAdmin` class comes in.  
+The `ModelAdmin` class is the representation of a model in the admin interface. It allows you to customize how the model is displayed, how it can be interacted with, and how it can be filtered.  
+You can customize the `ModelAdmin` class by creating a class that inherits from `admin.ModelAdmin` and then registering it with the model.
+
+_In our case, we want to display the `Books` model with a list of books sorted by the price in ascending order. We also want to display the `title` and `author` fields in the list view._
+
+Let's create a `BookAdmin` class in the `admin.py` file of the `books` app:
+
+```python
+class BookAdmin(admin.ModelAdmin):
+    list_display = ('title', 'author') # Display title and author fields in the list view
+    ordering = ('price',) # Sort by price in ascending order
+```
+
+Register the `BookAdmin` class with the `Books` model:
+
+```python
+admin.site.register(Book, BookAdmin)
+```
+
+In the end the `admin.py` file of the `books` app should look like this:
+
+```python
+from django.contrib import admin
+from .models import Book
+class BookAdmin(admin.ModelAdmin):
+    list_display = ('title', 'author') # Display title and author fields in the list view
+    ordering = ('price',) # Sort by price in ascending order
+admin.site.register(Book, BookAdmin)
+```
+
+Head over to the Django admin site and you will see the `Books` model listed under the `Books` section. The books will be displayed with the `title` and `author` fields in the list view, sorted by price in ascending order.
+
+![Books in Django admin site](/static/images/python/books.png)
+
+Let me teach you an even concise way to register the `ModelAdmin` using the `@admin.register` decorator.
+
+```python
+@admin.register(Book)
+class BookAdmin(admin.ModelAdmin):
+    list_display = ('title', 'author') # Display title and author fields in the list view
+    ordering = ('price',) # Sort by price in ascending order
+```
+
+The above code is equivalent to the previous code where we registered the `BookAdmin` class with the `Books` model but in a more concise way.
+
+## ModelAdmin Actions
+
+If you have noticed, selecting multiple books provides a dropdown with the action "Delete selected books". This is an example of a `ModelAdmin` action.
+
+![Model actions in Django admin site](/static/images/python/model_actions.png)
+
+That sounds limited, right? What if you want to create your own custom actions?
+
+### Custom ModelAdmin Actions
+
+The easiest way to explain actions is by example, so let’s dive in.
+A common use case for admin actions is the bulk updating of a model’s fields.
+To create an action, you need to define a method in the `ModelAdmin` class and decorate it with the `@admin.action` decorator.
+
+Let's create a custom action to mark selected books as published.
+
+```python
+class BookAdmin(admin.ModelAdmin):
+    list_display = (
+        "title",
+        "author",
+    )  # Display title and author fields in the list view
+    ordering = ("price",)  # Sort by price in ascending order
+    actions = ["mark_as_published"]  # Add the custom action
+
+    @admin.action(description="Mark selected books as published")
+    def mark_as_published(self, request, queryset):
+        queryset.update(published=True)
+
+
+admin.site.register(Book, BookAdmin)
+```
+
+![Custom ModelAdmin actions in Django](/static/images/python/custom_model_admin_actions.png)
+
+Admin model actions take three arguments: `self`, `request`, and `queryset`. The `queryset` argument is a list of all the selected objects. In our case, it will be a list of selected books.
+
+That is just a tip of the iceberg. There is so much more you can do with Django Admin. I hope this article has given you a good foundation to start exploring Django Admin. Feel free to explore the [official Django documentation](https://docs.djangoproject.com/en/5.0/ref/contrib/admin/) to learn more about Django Admin.
+
+Happy coding! 🚀
