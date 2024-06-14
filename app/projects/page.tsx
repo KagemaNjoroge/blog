@@ -13,8 +13,10 @@ export default function Projects() {
             Projects
           </h1>
           <p className="text-lg leading-7 text-gray-500 dark:text-gray-400">
-            Learning is my core value. Am on the move to learn new things and share my knowledge
-            with others. This is a premiere list of my projects.
+            I believe that the best way to learn is by experimenting. So, I experiment a lot with
+            new ideas. I also believe that the best way to learn is by failing. So, I fail a lot. I
+            learn a lot by building projects. Here are some of the projects I've built - even stupid
+            ones.
           </p>
         </div>
         <div className="container py-12">
